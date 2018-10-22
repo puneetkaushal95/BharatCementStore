@@ -6,20 +6,39 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MaterialTwoInfoActivity extends AppCompatActivity implements GestureDetector.OnGestureListener,
         GestureDetector.OnDoubleTapListener {
 
 
-        private GestureDetectorCompat gestureDetector;
+    private GestureDetectorCompat gestureDetector;
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_material_two_info);
-            this.gestureDetector = new GestureDetectorCompat(this,this);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_material_two_info);
+        this.gestureDetector = new GestureDetectorCompat(this, this);
+
+        Intent intent2 = getIntent();
+        TextView txtvw2 = findViewById(R.id.textView7);
+        ImageView imgvw2 = findViewById(R.id.imageView3);
+
+
+        boolean Show_Image = intent2.getBooleanExtra("Show_Image", false);
+        boolean Show_Description = intent2.getBooleanExtra("Show_Description", false);
+
+        if (Show_Image) {
+            txtvw2.setVisibility(View.INVISIBLE);
+            imgvw2.setVisibility(View.VISIBLE);
+        } else if (Show_Description) {
+            txtvw2.setVisibility(View.VISIBLE);
+            imgvw2.setVisibility(View.INVISIBLE);
         }
+    }
 
         @Override
         public boolean onTouchEvent(MotionEvent event) {

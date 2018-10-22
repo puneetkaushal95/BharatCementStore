@@ -6,6 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MaterialThreeInfoActivity extends AppCompatActivity implements GestureDetector.OnGestureListener,
@@ -19,7 +22,24 @@ public class MaterialThreeInfoActivity extends AppCompatActivity implements Gest
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_material_three_info);
             this.gestureDetector = new GestureDetectorCompat(this,this);
+
+            Intent intent3 = getIntent();
+            TextView txtvw3 = findViewById(R.id.textView9);
+            ImageView imgvw3 = findViewById(R.id.imageView4);
+
+
+            boolean Show_Image = intent3.getBooleanExtra("Show_Image", false);
+            boolean Show_Description = intent3.getBooleanExtra("Show_Description", false);
+
+            if (Show_Image) {
+                txtvw3.setVisibility(View.INVISIBLE);
+                imgvw3.setVisibility(View.VISIBLE);
+            } else if (Show_Description) {
+                txtvw3.setVisibility(View.VISIBLE);
+                imgvw3.setVisibility(View.INVISIBLE);
+            }
         }
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {

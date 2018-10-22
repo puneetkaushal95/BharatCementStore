@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("Show_Image",true);
                 intent.putExtra("Show_Description",false);
                 startActivity(intent);
+
             }
         });
 

@@ -7,6 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -21,13 +24,20 @@ public class Material_one_info extends AppCompatActivity implements GestureDetec
         setContentView(R.layout.activity_material_one_info);
         this.gestureDetector = new GestureDetectorCompat(this,this);
 
-        Image
+        TextView txtvw1 =  findViewById(R.id.textView5);
+        ImageView imgvw1 = findViewById(R.id.imageView2);
 
         Intent intent1 = getIntent();
         Boolean Show_Image = intent1.getBooleanExtra("Show_Image", false);
-        Boolean Show_Desription = intent1.getBooleanExtra("Show_Desription",false);
-        if (Show_Image){
+        Boolean Show_Description = intent1.getBooleanExtra("Show_Description",false);
 
+        if (Show_Image){
+            txtvw1.setVisibility(View.INVISIBLE);
+            imgvw1.setVisibility(View.VISIBLE);
+        }
+        else if (Show_Description){
+            imgvw1.setVisibility(View.INVISIBLE);
+            txtvw1.setVisibility(View.VISIBLE);
         }
     }
 
